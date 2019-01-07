@@ -13,16 +13,15 @@ object CassDBUtil {
       .setAppName("DatastaxTests")
       .set("spark.executor.memory", "1g")
       .set("spark.cassandra.connection.host", "localhost")
-    //val conf = new SparkConf().setMaster("local[2]").
-    // setAppName("scala_streaming_test").
-    // set("spark.cassandra.connection.host", "localhost")
     val ssc = new SparkContext(conf);
-    //val ssc = new StreamingContext(conf, Seconds(10))
     val con = ssc.cassandraTable("sentimentdb", "sentiment")
     val rdd = con.select("createdat", "hashtag", "sentiment", "tweet")
-    println("Records : "+rdd.count())
-    //    val sparkrdd = rdd.toJavaRDD()
-    //  sparkrdd.collect()
+    println("Records : " + rdd.count())
+    rdd.foreach(row => println("Row : " + " CreatedDate: " + row.getString(0) +
+      " HashTag: " + row.getString(1) +
+      " Sentiment: "+ row.getString(2)+
+      " Tweet: "+ row.getString(3)
+    ))
 
   }
 }
