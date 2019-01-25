@@ -17,7 +17,7 @@ object SentimentAnalysis {
       .setAppName("DatastaxTests")
       .set("spark.executor.memory", "1g")
       .set("spark.cassandra.connection.host", "localhost")
-    val ssc = new SparkContext(conf);
+          val ssc = new SparkContext(conf);
     val consumer = new KafkaConsumer[String, String](props)
     consumer.subscribe(util.Collections.singletonList(TOPIC))
     while (true) {
@@ -28,6 +28,7 @@ object SentimentAnalysis {
         var tweet = tweetData.substring(tweetData.indexOf("\t")).replaceAll("[\\.$|,|;|']", "").trim
         if(tweetData.contains("\t")){
           hashTag = tweetData.substring(0,tweetData.indexOf("\t"))
+          println("HashTag : "+hashTag)
           CassDBUtil.saveDataToCassandra(ssc,record.key(),hashTag,SentimentAnalysisUtils.detectSentiment(tweet).toString,tweet)
         }
       }

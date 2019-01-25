@@ -8,10 +8,10 @@ import twitter4j.conf.ConfigurationBuilder
 object TwitterToKafkaStream extends Serializable {
   def main(args: Array[String]): Unit = {
     val appName = "TwitterDAtaAnalysis12202018"
-    val consumerKey = "<ConsumerKey>"
-    val consumerSecret = "<ConsumerSecret>"
-    val accessToken = "<AccessToken>"
-    val accessSecret = "<AccessSecret>"
+    val consumerKey = "wUMY7vQJ69GuIhNEsZSjbnwT5"
+    val consumerSecret = "XDzw6m6ijATcFniILLZJc2A5vNHM5cvIdwnYPKVkLGO8AXjZFI"
+    val accessToken = "195335747-Z5xGh7ucZgUL39K1q8PeyqmzVmKTLcBk74JZAW7S"
+    val accessSecret = "r1goNJKk9NQsSJErn0XGSGEZgVmxlfQQ8zxadwknhl2If"
     val conf = new SparkConf()
     conf.setAppName(appName).setMaster("local[4]")
     val ssc = new StreamingContext(conf, Seconds(2))

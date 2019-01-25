@@ -2,7 +2,7 @@ name := "TDSA24_21111_30"
 
 version := "0.1"
 
-scalaVersion := "2.11.12"
+scalaVersion := "2.11.8"
 
 libraryDependencies += "org.apache.spark" %% "spark-core" % "2.3.1"
 libraryDependencies += "org.apache.spark" %% "spark-streaming" % "2.3.1"
